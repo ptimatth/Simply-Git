@@ -15,24 +15,79 @@ html
         h1 Git, Tout simplement
 
       section
-        div
-          h2 Les différentes zones locale!
-          img(src="images/git-index-initial-state.svg", width="60%")
+        h2 Les différentes zones locale!
+        img(src="images/git-index-initial-base.svg", width="60%")
         aside.notes
-          p test
           p Commeçons par expliquer les differents états de nos fichier:
           p Nos fichiers peuvent etre dans les etat
           p - <b>le working directory</b> comme son nom l'inqique c'est notre zone de travail,
           p - <b>l'index</b> on peux appeler ça la Zone de tranfert.
           p - <b>le head</b> le head reprense se qu'on a commiter
+
+      section
+        p Prennons un fichier en v1 file.txt
+        img(src="images/git-index-initial-state.svg", width="60%")
+      section
+        p lorsque on le modifie
+        img(src="images/git-index-initial-state-status.svg", width="60%")
+        hr
+        img(src="images/git-index-initial-state-status.png", width="60%")
+      section
+        p git add 
+        p: pre: code.language-bash
+              | # Le contenu et le nom
+              | git add file.txt
+        img(src="images/git-index-added-file.svg", width="60%")
+        hr
+        img(src="images/git-index-added-file.png", width="60%")
+      section
+        p git commit 
+        p: pre: code.language-bash
+              | # Le contenu et le nom
+              | git commit -m "Mon fichier de la mort qui tue"
+        img(src="images/git-index-committed-file.svg", width="60%")
+        hr
+        img(src="images/git-index-committed-file.png", width="60%")
+
+
       section 
         h2 comment identifier un commit
-      section 
-        p <b>le SHA </b><div class="commit-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="commit-sha">231ca74</div>
-        p <b>la reference a la HEAD </b><div class="commit-head"> HEAD</div><div class="commit-head">HEAD~</div><div class="commit-head">HEAD~2</div>
+
+      section
+        ul 
+          li <b>le SHA </b><div class="git-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="git-sha">231ca74</div><div class="git-sha">231ca74~</div>
+          li <b>la reference a la HEAD </b><div class="git-head"> HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div>
+          li <b>la reference a la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div>
+          li <b>la reference au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div>
         aside.notes
           p il y a plusieurs manière d'identifier un commit 
           p le sha qui est UNIQUE a chaque commite et decoule du commit courant et du commit preceden (si vous changer le commit precedent, le sha du commit suivant en sera aussi affecté)
-          p 
+          p le plus important c'est la reference par rapport;
+          p seul le sha est le vrais identiicateur du commit;
+
+      section
+        h2 Ça fonctionne aussi avec l'origin
+        ul
+          li master <div class="git-origin">origin/master</div> <div class="git-origin">origin/master~</div><div class="git-origin">...</div>
+          li head <div class="git-origin">origin/HEAD</div> <div class="git-origin">origin/HEAD~</div><div class="git-origin">...</div>
+      section 
+        h2 mais...
+        ul
+          li Le sha <div class="git-origin"><del>origin/231ca74</del></div>
+          li Le tag <div class="git-origin"><del>origin/0.1.0</del></div>
+        aside.notes
+          p en effet, les tags et les sha sont des identifiants uniques a tout le monde
+          p la ou les branches et la head est locale a chacun
+      section 
+        h2 Pourquoi identifier un commit ?
+        aside.notes
+          p vous allez me dire c'est bien beau d'identifier un commit mais a quoi ça sert ?
+          p identifier un commit va nous permettre de nous deplacer dans l'arbre
+      section
+        h2
+
+      
+
+          
           
     script(src='build/build.js')
