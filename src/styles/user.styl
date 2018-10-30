@@ -29,4 +29,11 @@ div.row
   display:flex
   flex-direction:row
   justify-content: space-evenly
-  
+li.notbullet::before
+  content: ""
+  list-style-type:none; 
+li.notbullet
+  display:flex
+  justify-content: center 
+li.empty::before
+  content: ""
