@@ -15,13 +15,41 @@ html
         h1 Git, Tout simplement
 
       section
+        h2 Commenceons par le commencement
+
+      section
+        h2 la config !
+        ul
+          li: code.language-git git config --global user.name "Matthieu D."
+          li: code.language-git git config --global user.email "e@mail.com"
+          li le tout sera enregistrer ~/.gitconfig
+          li Si on veux des information specifique a un repo
+
+          li: code.language-git git config user.name "Matthieu DUVAL"
+          li: code.language-git git config user.email "email@mail.com"
+          li le tout est stocké dans .git/config
+
+      section
+        img(src="images/local-config.png", width="90%")
+
+      section
+        h2 les commandes de bases
+        ul
+          li: code.language-git git status
+          li: code.language-git git log --graph --all --decorate
+          li: code.language-git git fetch
+          li: code.language-git git pull (--rebase)
+          li: img(src="images/pull-vs-fetch-merge.svg", width="60%")
+
+
+      section
         h2 Les différentes zones locale!
         img(src="images/git-index-initial-base.svg", width="60%")
         aside.notes
           p Commeçons par expliquer les differents états de nos fichier:
           p Nos fichiers peuvent etre dans les etat
           p - <b>le working directory</b> comme son nom l'inqique c'est notre zone de travail,
-          p - <b>l'index</b> on peux appeler ça la Zone de tranfert.
+          p - <b>l'index</b> on peut appeler ça la Zone de tranfert.
           p - <b>le head</b> le head reprense se qu'on a commiter
 
       section
@@ -34,30 +62,53 @@ html
         img(src="images/git-index-initial-state-status.png", width="60%")
       section
         p git add 
-        p: pre: code.language-bash
-              | # Le contenu et le nom
-              | git add file.txt
+        p: code.language-bash git add file.txt
         img(src="images/git-index-added-file.svg", width="60%")
         hr
         img(src="images/git-index-added-file.png", width="60%")
       section
         p git commit 
-        p: pre: code.language-bash
-              | # Le contenu et le nom
-              | git commit -m "Mon fichier de la mort qui tue"
+        p: code.language-git git commit -m "Mon fichier de la mort qui tue"
         img(src="images/git-index-committed-file.svg", width="60%")
         hr
         img(src="images/git-index-committed-file.png", width="60%")
+        p: code.language-git git push
 
+      section
+        p ha la boulette !
+        img(src="images/la_boulette.gif", width="60%")
+        p on a fait une erreur
+        aside.notes
+          p on à maleheuresement fait une faute le fichier
+      section
+        img(src="images/dont-panic.png", width="60%")
+        aside.notes
+         p pas de panique on va pouvoir corriger tout ça
+      section
+        h3 grâce au amend
+        ul
+          li on commence par corriger notre fichier
+          li: code.language-git git add file.txt
+          li et la ça diffère un peux
+          li: code.language-git git commit --amend
+          li ça lance un interpreteur vi qui nous montre le nouveau commit
+          li on confirme que tout est ok (ECHAP :wq)
+          li: code.language-git git push --force
+      section
+        h2 c'est vachement bien mais ....
+        aside.notes
+          p si on veux aller plus loin que le dernier commit, la on va devoir fait un peu plus de cours
+      section
+        img(src="images/paul-doubtful.svg", width="50%")
+        h3 "C'est avant que tu as fait une erreur"
 
       section 
         h2 comment identifier un commit
-
       section
         ul 
           li <b>le SHA </b><div class="git-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="git-sha">231ca74</div><div class="git-sha">231ca74~</div>
-          li <b>la reference a la HEAD </b><div class="git-head"> HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div>
-          li <b>la reference a la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div>
+          li <b>la reference à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div>
+          li <b>la reference à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div>
           li <b>la reference au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div>
         aside.notes
           p il y a plusieurs manière d'identifier un commit 
@@ -84,8 +135,86 @@ html
           p vous allez me dire c'est bien beau d'identifier un commit mais a quoi ça sert ?
           p identifier un commit va nous permettre de nous deplacer dans l'arbre
       section
-        h2
+        h2 le commit amend ne fonctionne pas tout le temps.
+        aside.notes
+          p le moment est venu de parler du commit de fixup
 
+
+      section
+        h2 fixup !
+        ul
+          li on commence par corriger notre fichier
+          li: code.language-git git add file.txt
+          li et la ça diffère un peu
+          li: code.language-git git commit --fixup (sha du commit)
+          li: img(src="images/histo-fixup.png" width="65%")
+      section
+        h2 fixup !
+        ul
+          li on va donc faire le rebase
+          li -i
+          li (sha du commit)~
+          li --autosquash
+          li: code.language-git git rebase -i (sha du commit)~ --autosquash
+        aside.notes
+          p rebase : on réecrit l'historique
+          p -i pour interactive, afin qu'on puisse suivre au fur et a mesure
+          p (sha du commit)~ A partir du commit precedent
+          p --autosquash qui va fusionner les commit de fixup
+      section
+        h2 fixup!
+        img(src="images/histo-fixup-end.png", width="70%")
+        h2 \o/
+
+      section
+        img(src="images/paul-doubtful.svg", width="50%")
+        h3 "mais ça sert a rien ton truc !"
+
+      section
+        h3 "Bon deplace moi tout ça sur une branche poubelle"
+        h4 c'est donc ce que nous allons faire.
+
+      section
+        ul
+          li: code.language-git git branch trash
+          li: code.language-git git push -u origin trash
+          li: code.language-git git reset --hard $(sha premier commit)
+          li: img(src="images/reset-trash.png", width="60%")
+          li: code.language-git git push -f
+          li: img(src="images/force-push-trash.png", width="60%")
+      section
+        img(src="images/jane-doubtful.svg", width="40%")
+        h3 "Heu ouais mais si on a qu'une branche, je fais comment pour gerer tous mes environnements ?"
+      section
+        h2 Voila ce que l'on a habituelement
+        img(src="images/multi-branch-init.png", width="70%")
+      section
+        h2 L'étape du deploiment en prod
+      section
+        ul
+          li: code.language-git git checkout dev
+          li: code.language-git git pull --rebase
+          li: code.language-git git commit -m "Preparation a la livraison" <br> --allow-empty
+          li: code.language-git git push
+          li: code.language-git git checkout master
+          li: code.language-git git merge -m "Livraison 1.0" dev --no-ff
+          li: code.language-git git tag 1.0
+          li: code.language-git git push
+          li: code.language-git git push --tags
+      section
+        img(src="images/multi-branch-end.png", width="70%")
+
+      section
+        h1 Merci
+        a(href="https://github.com/mghignet/git-dammit-talk/") 
+          p Basé sur : <hr> @github/mghignet/git-dammit-talk
+        a(href="https://github.com/ptimatth/simply-git/") 
+          p Sources diapo: <hr> @github/ptimatth/simply-git
+      section
+       div.row
+        img(src='images/paul-happy.svg', width="20%")
+        img(src='images/jane-happy.svg', width="20%")
+       h3 "On à des questions !"
       
 
           
