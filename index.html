@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Git, Tout simplement</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article class="deck">
+      <section>
+        <h1>Git, Tout simplement</h1>
+      </section>
+      <section>
+        <h2>Commenceons par le commencement</h2>
+      </section>
+      <section>
+        <h2>la config !</h2>
+        <ul>
+          <li><code class="language-git">git config --global user.name "Matthieu D."</code></li>
+          <li><code class="language-git">git config --global user.email "e@mail.com"</code></li>
+          <li>le tout sera enregistrer ~/.gitconfig</li>
+          <li>Si on veux des information specifique a un repo</li>
+          <li><code class="language-git">git config user.name "Matthieu DUVAL"</code></li>
+          <li><code class="language-git">git config user.email "email@mail.com"</code></li>
+          <li>le tout est stocké dans .git/config</li>
+        </ul>
+      </section>
+      <section><img src="images/local-config.png" width="90%"></section>
+      <section>
+        <h2>les commandes de bases</h2>
+        <ul>
+          <li><code class="language-git">git status</code></li>
+          <li><code class="language-git">git log --graph --all --decorate</code></li>
+          <li><code class="language-git">git fetch</code></li>
+          <li><code class="language-git">git pull (--rebase)</code></li>
+          <li><img src="images/pull-vs-fetch-merge.svg" width="60%"></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Les différentes zones locale!</h2><img src="images/git-index-initial-base.svg" width="60%">
+        <aside class="notes">
+          <p>Commeçons par expliquer les differents états de nos fichier:</p>
+          <p>Nos fichiers peuvent etre dans les etat</p>
+          <p>- <b>le working directory</b> comme son nom l'inqique c'est notre zone de travail,</p>
+          <p>- <b>l'index</b> on peut appeler ça la Zone de tranfert.</p>
+          <p>- <b>le head</b> le head reprense se qu'on a commiter</p>
+        </aside>
+      </section>
+      <section>
+        <p>Prennons un fichier en v1 file.txt</p><img src="images/git-index-initial-state.svg" width="60%">
+      </section>
+      <section>
+        <p>lorsque on le modifie</p><img src="images/git-index-initial-state-status.svg" width="60%">
+        <hr><img src="images/git-index-initial-state-status.png" width="60%">
+      </section>
+      <section>
+        <p>git add </p>
+        <p><code class="language-bash">git add file.txt</code></p><img src="images/git-index-added-file.svg" width="60%">
+        <hr><img src="images/git-index-added-file.png" width="60%">
+      </section>
+      <section>
+        <p>git commit </p>
+        <p><code class="language-git">git commit -m "Mon fichier de la mort qui tue"</code></p><img src="images/git-index-committed-file.svg" width="60%">
+        <hr><img src="images/git-index-committed-file.png" width="60%">
+        <p><code class="language-git">git push</code></p>
+      </section>
+      <section>
+        <p>ha la boulette !</p><img src="images/la_boulette.gif" width="60%">
+        <p>on a fait une erreur</p>
+        <aside class="notes">
+          <p>on à maleheuresement fait une faute le fichier</p>
+        </aside>
+      </section>
+      <section><img src="images/dont-panic.png" width="60%">
+        <aside class="notes">
+          <p>pas de panique on va pouvoir corriger tout ça</p>
+        </aside>
+      </section>
+      <section>
+        <h3>grâce au amend</h3>
+        <ul>
+          <li>on commence par corriger notre fichier</li>
+          <li><code class="language-git">git add file.txt</code></li>
+          <li>et la ça diffère un peux</li>
+          <li><code class="language-git">git commit --amend</code></li>
+          <li>ça lance un interpreteur vi qui nous montre le nouveau commit</li>
+          <li>on confirme que tout est ok (ECHAP :wq)</li>
+          <li><code class="language-git">git push --force</code></li>
+        </ul>
+      </section>
+      <section>
+        <h2>c'est vachement bien mais ....</h2>
+        <aside class="notes">
+          <p>si on veux aller plus loin que le dernier commit, la on va devoir fait un peu plus de cours</p>
+        </aside>
+      </section>
+      <section><img src="images/paul-doubtful.svg" width="50%">
+        <h3>"C'est avant que tu as fait une erreur"</h3>
+      </section>
+      <section> 
+        <h2>comment identifier un commit</h2>
+      </section>
+      <section>
+        <ul> 
+          <li><b>le SHA </b><div class="git-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="git-sha">231ca74</div><div class="git-sha">231ca74~</div></li>
+          <li><b>la reference à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div></li>
+          <li><b>la reference à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div></li>
+          <li><b>la reference au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div></li>
+        </ul>
+        <aside class="notes">
+          <p>il y a plusieurs manière d'identifier un commit </p>
+          <p>le sha qui est UNIQUE a chaque commite et decoule du commit courant et du commit preceden (si vous changer le commit precedent, le sha du commit suivant en sera aussi affecté)</p>
+          <p>le plus important c'est la reference par rapport;</p>
+          <p>seul le sha est le vrais identiicateur du commit;</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Ça fonctionne aussi avec l'origin</h2>
+        <ul>
+          <li>master <div class="git-origin">origin/master</div> <div class="git-origin">origin/master~</div><div class="git-origin">...</div></li>
+          <li>head <div class="git-origin">origin/HEAD</div> <div class="git-origin">origin/HEAD~</div><div class="git-origin">...</div></li>
+        </ul>
+      </section>
+      <section> 
+        <h2>mais...</h2>
+        <ul>
+          <li>Le sha <div class="git-origin"><del>origin/231ca74</del></div></li>
+          <li>Le tag <div class="git-origin"><del>origin/0.1.0</del></div></li>
+        </ul>
+        <aside class="notes">
+          <p>en effet, les tags et les sha sont des identifiants uniques a tout le monde</p>
+          <p>la ou les branches et la head est locale a chacun</p>
+        </aside>
+      </section>
+      <section> 
+        <h2>Pourquoi identifier un commit ?</h2>
+        <aside class="notes">
+          <p>vous allez me dire c'est bien beau d'identifier un commit mais a quoi ça sert ?</p>
+          <p>identifier un commit va nous permettre de nous deplacer dans l'arbre</p>
+        </aside>
+      </section>
+      <section>
+        <h2>le commit amend ne fonctionne pas tout le temps.</h2>
+        <aside class="notes">
+          <p>le moment est venu de parler du commit de fixup</p>
+        </aside>
+      </section>
+      <section>
+        <h2>fixup !</h2>
+        <ul>
+          <li>on commence par corriger notre fichier</li>
+          <li><code class="language-git">git add file.txt</code></li>
+          <li>et la ça diffère un peu</li>
+          <li><code class="language-git">git commit --fixup (sha du commit)</code></li>
+          <li><img src="images/histo-fixup.png" width="65%"></li>
+        </ul>
+      </section>
+      <section>
+        <h2>fixup !</h2>
+        <ul>
+          <li>on va donc faire le rebase</li>
+          <li>-i</li>
+          <li>(sha du commit)~</li>
+          <li>--autosquash</li>
+          <li><code class="language-git">git rebase -i (sha du commit)~ --autosquash</code></li>
+        </ul>
+        <aside class="notes">
+          <p>rebase : on réecrit l'historique</p>
+          <p>-i pour interactive, afin qu'on puisse suivre au fur et a mesure</p>
+          <p>(sha du commit)~ A partir du commit precedent</p>
+          <p>--autosquash qui va fusionner les commit de fixup</p>
+        </aside>
+      </section>
+      <section>
+        <h2>fixup!</h2><img src="images/histo-fixup-end.png" width="70%">
+        <h2>\o/</h2>
+      </section>
+      <section><img src="images/paul-doubtful.svg" width="50%">
+        <h3>"mais ça sert a rien ton truc !"</h3>
+      </section>
+      <section>
+        <h3>"Bon deplace moi tout ça sur une branche poubelle"</h3>
+        <h4>c'est donc ce que nous allons faire.</h4>
+      </section>
+      <section>
+        <ul>
+          <li><code class="language-git">git branch trash</code></li>
+          <li><code class="language-git">git push -u origin trash</code></li>
+          <li><code class="language-git">git reset --hard $(sha premier commit)</code></li>
+          <li><img src="images/reset-trash.png" width="60%"></li>
+          <li><code class="language-git">git push -f</code></li>
+          <li><img src="images/force-push-trash.png" width="60%"></li>
+        </ul>
+      </section>
+      <section><img src="images/jane-doubtful.svg" width="40%">
+        <h3>"Heu ouais mais si on a qu'une branche, je fais comment pour gerer tous mes environnements ?"</h3>
+      </section>
+      <section>
+        <h2>Voila ce que l'on a habituelement</h2><img src="images/multi-branch-init.png" width="70%">
+      </section>
+      <section>
+        <h2>L'étape du deploiment en prod</h2>
+      </section>
+      <section>
+        <ul>
+          <li><code class="language-git">git checkout dev</code></li>
+          <li><code class="language-git">git pull --rebase</code></li>
+          <li><code class="language-git">git commit -m "Preparation a la livraison" <br> --allow-empty</code></li>
+          <li><code class="language-git">git push</code></li>
+          <li><code class="language-git">git checkout master</code></li>
+          <li><code class="language-git">git merge -m "Livraison 1.0" dev --no-ff</code></li>
+          <li><code class="language-git">git tag 1.0</code></li>
+          <li><code class="language-git">git push</code></li>
+          <li><code class="language-git">git push --tags</code></li>
+        </ul>
+      </section>
+      <section><img src="images/multi-branch-end.png" width="70%"></section>
+      <section>
+        <h1>Merci</h1><a href="https://github.com/mghignet/git-dammit-talk/"> 
+          <p>Basé sur : <hr> @github/mghignet/git-dammit-talk</p></a><a href="https://github.com/ptimatth/simply-git/"> 
+          <p>Sources diapo: <hr> @github/ptimatth/simply-git</p></a>
+      </section>
+      <section>
+        <div class="row"><img src="images/paul-happy.svg" width="20%"><img src="images/jane-happy.svg" width="20%"></div>
+        <h3>"On à des questions !"</h3>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
