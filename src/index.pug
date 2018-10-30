@@ -27,5 +27,12 @@ html
           p - <b>le head</b> le head reprense se qu'on a commiter
       section 
         h2 comment identifier un commit
+      section 
+        p <b>le SHA </b><div class="commit-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="commit-sha">231ca74</div>
+        p <b>la reference a la HEAD </b><div class="commit-head"> HEAD</div><div class="commit-head">HEAD~</div><div class="commit-head">HEAD~2</div>
+        aside.notes
+          p il y a plusieurs manière d'identifier un commit 
+          p le sha qui est UNIQUE a chaque commite et decoule du commit courant et du commit preceden (si vous changer le commit precedent, le sha du commit suivant en sera aussi affecté)
+          p 
           
     script(src='build/build.js')
