@@ -12,15 +12,31 @@
         <h1>Git, Tout simplement</h1>
       </section>
       <section>
-        <h2>Commenceons par le commencement</h2>
+        <h2>Commençons par le commencement</h2>
+      </section>
+      <section>
+        <div class="row">
+          <li class="empty">
+            <ul>
+              <li class="notbullet"><img src="images/paul-normal.svg" width="60%"></li>
+              <li class="notbullet">Paul Request</li>
+            </ul>
+          </li>
+          <li class="empty">
+            <ul>
+              <li class="notbullet"><img src="images/jane-normal.svg" width="60%"></li>
+              <li class="notbullet">Jane Kins</li>
+            </ul>
+          </li>
+        </div>
       </section>
       <section>
         <h2>la config !</h2>
         <ul>
           <li><code class="language-git">git config --global user.name "Matthieu D."</code></li>
           <li><code class="language-git">git config --global user.email "e@mail.com"</code></li>
-          <li>le tout sera enregistrer ~/.gitconfig</li>
-          <li>Si on veux des information specifique a un repo</li>
+          <li>le tout sera enregistré ~/.gitconfig</li>
+          <li>Si on veut des informations spécifiques à un repo</li>
           <li><code class="language-git">git config user.name "Matthieu DUVAL"</code></li>
           <li><code class="language-git">git config user.email "email@mail.com"</code></li>
           <li>le tout est stocké dans .git/config</li>
@@ -28,7 +44,7 @@
       </section>
       <section><img src="images/local-config.png" width="90%"></section>
       <section>
-        <h2>les commandes de bases</h2>
+        <h2>les commandes de base</h2>
         <ul>
           <li><code class="language-git">git status</code></li>
           <li><code class="language-git">git log --graph --all --decorate</code></li>
@@ -38,7 +54,7 @@
         </ul>
       </section>
       <section>
-        <h2>Les différentes zones locale!</h2><img src="images/git-index-initial-base.svg" width="60%">
+        <h2>Les différentes zones locales!</h2><img src="images/git-index-initial-base.svg" width="60%">
         <aside class="notes">
           <p>Commeçons par expliquer les differents états de nos fichier:</p>
           <p>Nos fichiers peuvent etre dans les etat</p>
@@ -48,10 +64,10 @@
         </aside>
       </section>
       <section>
-        <p>Prennons un fichier en v1 file.txt</p><img src="images/git-index-initial-state.svg" width="60%">
+        <p>Prenons un fichier en v1 file.txt</p><img src="images/git-index-initial-state.svg" width="60%">
       </section>
       <section>
-        <p>lorsque on le modifie</p><img src="images/git-index-initial-state-status.svg" width="60%">
+        <p>lorsqu'on le modifie</p><img src="images/git-index-initial-state-status.svg" width="60%">
         <hr><img src="images/git-index-initial-state-status.png" width="60%">
       </section>
       <section>
@@ -66,7 +82,7 @@
         <p><code class="language-git">git push</code></p>
       </section>
       <section>
-        <p>ha la boulette !</p><img src="images/la_boulette.gif" width="60%">
+        <p>ah la boulette !</p><img src="images/la_boulette.gif" width="60%">
         <p>on a fait une erreur</p>
         <aside class="notes">
           <p>on à maleheuresement fait une faute le fichier</p>
@@ -82,9 +98,9 @@
         <ul>
           <li>on commence par corriger notre fichier</li>
           <li><code class="language-git">git add file.txt</code></li>
-          <li>et la ça diffère un peux</li>
+          <li>et là ça diffère un peu</li>
           <li><code class="language-git">git commit --amend</code></li>
-          <li>ça lance un interpreteur vi qui nous montre le nouveau commit</li>
+          <li>ça lance un interpréteur vi qui nous montre le nouveau commit</li>
           <li>on confirme que tout est ok (ECHAP :wq)</li>
           <li><code class="language-git">git push --force</code></li>
         </ul>
@@ -104,15 +120,15 @@
       <section>
         <ul> 
           <li><b>le SHA </b><div class="git-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="git-sha">231ca74</div><div class="git-sha">231ca74~</div></li>
-          <li><b>la reference à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div></li>
-          <li><b>la reference à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div></li>
-          <li><b>la reference au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div></li>
+          <li><b>la référence à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div></li>
+          <li><b>la référence à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div></li>
+          <li><b>la référence au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div></li>
         </ul>
         <aside class="notes">
           <p>il y a plusieurs manière d'identifier un commit </p>
-          <p>le sha qui est UNIQUE a chaque commite et decoule du commit courant et du commit preceden (si vous changer le commit precedent, le sha du commit suivant en sera aussi affecté)</p>
-          <p>le plus important c'est la reference par rapport;</p>
-          <p>seul le sha est le vrais identiicateur du commit;</p>
+          <p>le sha qui est UNIQUE à chaque commit et découle du commit courant et du commit précédent (si vous changez le commit precedent, le sha du commit suivant en sera aussi affecté)</p>
+          <p>le plus important c'est la référence par rapport;</p>
+          <p>seul le sha est le vrai identificateur du commit;</p>
         </aside>
       </section>
       <section>
@@ -197,16 +213,16 @@
         <h3>"Heu ouais mais si on a qu'une branche, je fais comment pour gerer tous mes environnements ?"</h3>
       </section>
       <section>
-        <h2>Voila ce que l'on a habituelement</h2><img src="images/multi-branch-init.png" width="70%">
+        <h2>Voila ce que l'on a habituellement</h2><img src="images/multi-branch-init.png" width="70%">
       </section>
       <section>
-        <h2>L'étape du deploiment en prod</h2>
+        <h2>L'étape du déploiement en prod</h2>
       </section>
       <section>
         <ul>
           <li><code class="language-git">git checkout dev</code></li>
           <li><code class="language-git">git pull --rebase</code></li>
-          <li><code class="language-git">git commit -m "Preparation a la livraison" <br> --allow-empty</code></li>
+          <li><code class="language-git">git commit -m "Préparation à la livraison" <br> --allow-empty</code></li>
           <li><code class="language-git">git push</code></li>
           <li><code class="language-git">git checkout master</code></li>
           <li><code class="language-git">git merge -m "Livraison 1.0" dev --no-ff</code></li>
@@ -217,13 +233,55 @@
       </section>
       <section><img src="images/multi-branch-end.png" width="70%"></section>
       <section>
+        <h2>bonus !</h2>
+      </section>
+      <section>
+        <ul>
+          <li class="empty">
+            <p>voir les changements du dernier commit</p><code class="language-git">git show</code>
+          </li>
+          <li class="empty">
+            <p>voir les changements par rapport au dernier commit</p><code class="language-git">git diff</code>
+          </li>
+          <li class="empty">
+            <p>comparer deux commits</p><code class="language-git">git diff (shaCommit1)..(shaCommit2)</code>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li class="empty">
+            <p>retrouver un commit disparu</p><code class="language-git">git reflog</code>
+          </li>
+          <li class="empty">
+            <p>rechercher un commit</p><code class="language-git">git log --grep=(patern)</code>
+          </li>
+          <li class="empty">
+            <p>retourner sur la branche précédente</p><code class="language-git">git checkout -</code>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li class="empty">
+            <p>récupérer un repo git</p><code class="language-git">git clone (urlDuRepo)</code>
+          </li>
+          <li class="empty">
+            <p>avoir de l'aide</p><code class="language-git">git (commande) --help</code>
+          </li>
+          <li class="empty">
+            <p>La documentation officielle de git</p><a href="https://git-scm.com/docs/">https://git-scm.com/docs/</a>
+          </li>
+        </ul>
+      </section>
+      <section>
         <h1>Merci</h1><a href="https://github.com/mghignet/git-dammit-talk/"> 
           <p>Basé sur : <hr> @github/mghignet/git-dammit-talk</p></a><a href="https://github.com/ptimatth/simply-git/"> 
           <p>Sources diapo: <hr> @github/ptimatth/simply-git</p></a>
       </section>
       <section>
         <div class="row"><img src="images/paul-happy.svg" width="20%"><img src="images/jane-happy.svg" width="20%"></div>
-        <h3>"On à des questions !"</h3>
+        <h3>"On a des questions !"</h3>
       </section>
     </article>
     <script src="build/build.js"></script>
