@@ -15,7 +15,7 @@ html
         h1 Git, Tout simplement
 
       section
-        h2 Commenceons par le commencement
+        h2 Commençons par le commencement
       section
         div.row
 
@@ -33,8 +33,8 @@ html
         ul
           li: code.language-git git config --global user.name "Matthieu D."
           li: code.language-git git config --global user.email "e@mail.com"
-          li le tout sera enregistrer ~/.gitconfig
-          li Si on veux des information specifique a un repo
+          li le tout sera enregistré ~/.gitconfig
+          li Si on veut des informations spécifiques à un repo
 
           li: code.language-git git config user.name "Matthieu DUVAL"
           li: code.language-git git config user.email "email@mail.com"
@@ -44,7 +44,7 @@ html
         img(src="images/local-config.png", width="90%")
 
       section
-        h2 les commandes de bases
+        h2 les commandes de base
         ul
           li: code.language-git git status
           li: code.language-git git log --graph --all --decorate
@@ -54,7 +54,7 @@ html
 
 
       section
-        h2 Les différentes zones locale!
+        h2 Les différentes zones locales!
         img(src="images/git-index-initial-base.svg", width="60%")
         aside.notes
           p Commeçons par expliquer les differents états de nos fichier:
@@ -64,10 +64,10 @@ html
           p - <b>le head</b> le head reprense se qu'on a commiter
 
       section
-        p Prennons un fichier en v1 file.txt
+        p Prenons un fichier en v1 file.txt
         img(src="images/git-index-initial-state.svg", width="60%")
       section
-        p lorsque on le modifie
+        p lorsqu'on le modifie
         img(src="images/git-index-initial-state-status.svg", width="60%")
         hr
         img(src="images/git-index-initial-state-status.png", width="60%")
@@ -86,7 +86,7 @@ html
         p: code.language-git git push
 
       section
-        p ha la boulette !
+        p ah la boulette !
         img(src="images/la_boulette.gif", width="60%")
         p on a fait une erreur
         aside.notes
@@ -100,9 +100,9 @@ html
         ul
           li on commence par corriger notre fichier
           li: code.language-git git add file.txt
-          li et la ça diffère un peux
+          li et là ça diffère un peu
           li: code.language-git git commit --amend
-          li ça lance un interpreteur vi qui nous montre le nouveau commit
+          li ça lance un interpréteur vi qui nous montre le nouveau commit
           li on confirme que tout est ok (ECHAP :wq)
           li: code.language-git git push --force
       section
@@ -118,14 +118,14 @@ html
       section
         ul 
           li <b>le SHA </b><div class="git-sha"> 231ca74f8444120a974ac786cf8c4d4b05de0a4a</div><div class="git-sha">231ca74</div><div class="git-sha">231ca74~</div>
-          li <b>la reference à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div>
-          li <b>la reference à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div>
-          li <b>la reference au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div>
+          li <b>la référence à la HEAD </b><div class="git-head">HEAD</div><div class="git-head">HEAD~</div><div class="git-head">HEAD~2</div>
+          li <b>la référence à la BRANCHE </b><div class="git-branch">master</div><div class="git-branch">master~</div><div class="git-branch">master~2</div>
+          li <b>la référence au tag </b><div class="git-tag">0.1.0</div><div class="git-tag">0.1.0~</div><div class="git-tag">0.1.0~2</div>
         aside.notes
           p il y a plusieurs manière d'identifier un commit 
-          p le sha qui est UNIQUE a chaque commite et decoule du commit courant et du commit preceden (si vous changer le commit precedent, le sha du commit suivant en sera aussi affecté)
-          p le plus important c'est la reference par rapport;
-          p seul le sha est le vrais identiicateur du commit;
+          p le sha qui est UNIQUE à chaque commit et découle du commit courant et du commit précédent (si vous changez le commit precedent, le sha du commit suivant en sera aussi affecté)
+          p le plus important c'est la référence par rapport;
+          p seul le sha est le vrai identificateur du commit;
 
       section
         h2 Ça fonctionne aussi avec l'origin
@@ -197,15 +197,15 @@ html
         img(src="images/jane-doubtful.svg", width="40%")
         h3 "Heu ouais mais si on a qu'une branche, je fais comment pour gerer tous mes environnements ?"
       section
-        h2 Voila ce que l'on a habituelement
+        h2 Voila ce que l'on a habituellement
         img(src="images/multi-branch-init.png", width="70%")
       section
-        h2 L'étape du deploiment en prod
+        h2 L'étape du déploiement en prod
       section
         ul
           li: code.language-git git checkout dev
           li: code.language-git git pull --rebase
-          li: code.language-git git commit -m "Preparation a la livraison" <br> --allow-empty
+          li: code.language-git git commit -m "Préparation à la livraison" <br> --allow-empty
           li: code.language-git git push
           li: code.language-git git checkout master
           li: code.language-git git merge -m "Livraison 1.0" dev --no-ff
@@ -214,6 +214,42 @@ html
           li: code.language-git git push --tags
       section
         img(src="images/multi-branch-end.png", width="70%")
+      section
+        h2 bonus !
+      section
+        ul
+          li.empty
+            p voir les changements du dernier commit
+            code.language-git git show
+          li.empty
+            p voir les changements par rapport au dernier commit
+            code.language-git git diff
+          li.empty
+            p comparer deux commits
+            code.language-git git diff (shaCommit1)..(shaCommit2)
+      section
+        ul
+          li.empty
+            p retrouver un commit disparu
+            code.language-git git reflog
+          li.empty
+            p rechercher un commit
+            code.language-git git log --grep=(patern)
+          li.empty
+            p retourner sur la branche précédente
+            code.language-git git checkout -
+          
+      section
+        ul
+          li.empty
+            p récupérer un repo git
+            code.language-git git clone (urlDuRepo)
+          li.empty
+            p avoir de l'aide
+            code.language-git git (commande) --help
+          li.empty
+            p La documentation officielle de git
+            a(href="https://git-scm.com/docs/") https://git-scm.com/docs/
 
       section
         h1 Merci
@@ -222,11 +258,11 @@ html
         a(href="https://github.com/ptimatth/simply-git/") 
           p Sources diapo: <hr> @github/ptimatth/simply-git
       section
-       div.row
-        img(src='images/paul-happy.svg', width="20%")
-        img(src='images/jane-happy.svg', width="20%")
-       h3 "On à des questions !"
-      
+        div.row
+          img(src='images/paul-happy.svg', width="20%")
+          img(src='images/jane-happy.svg', width="20%")
+        h3 "On a des questions !"
+       
 
           
           
